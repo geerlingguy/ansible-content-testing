@@ -14,10 +14,9 @@
     - name: community_test
 
   tasks:
-    # Create a kind cluster.
-    - include_tasks: tasks/prepare-kind.yml
+    - name: Create a kind cluster.
+      include_tasks: tasks/prepare-kind.yml
 
-    # Gather information and run a command on the kind cluster.
     - name: Test the k8s_info module from the collection.
       k8s_info:
         kind: Pod
@@ -38,10 +37,10 @@
     - name: Dump the date.
       debug: var=exec_output.stdout
 
-    # Do the same tasks in a standalone role.
-    - include_role:
+    - name: Run the same tasks as above, but in a standalone role.
+      include_role:
         name: replay
 
   post_tasks:
-    # Delete the kind cluster.
-    # - include_tasks: tasks/delete-kind.yml
+    # - name: Delete the kind cluster.
+    #   include_tasks: tasks/delete-kind.yml
