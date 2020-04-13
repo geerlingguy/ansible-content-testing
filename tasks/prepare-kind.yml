@@ -20,9 +20,9 @@
       changed_when: false
       register: kind_clusters
 
-    - name: Start a kind test cluster.
-      command: kind create cluster --name=test
-      when: "'test' not in kind_clusters.stdout"
+    - name: Start a kind cluster.
+      command: kind create cluster --name=kind
+      when: "'kind' not in kind_clusters.stdout"
       changed_when: false
 
   delegate_to: localhost

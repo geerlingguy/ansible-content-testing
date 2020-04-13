@@ -2,7 +2,7 @@
 - block:
 
     - name: Delete kind cluster.
-      command: kind delete cluster --name=test
+      command: kind delete cluster --name=kind
       changed_when: false
 
   delegate_to: localhost

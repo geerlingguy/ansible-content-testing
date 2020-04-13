@@ -24,11 +24,12 @@ jobs:
         with:
           python-version: ${{ matrix.python_version }}
 
-      - name: Set up KinD cluster
-        uses: engineerd/setup-kind@v0.3.0
+      # Use our tasks in the playbook which is about as fast.
+      # - name: Set up KinD cluster
+      #   uses: engineerd/setup-kind@v0.3.0
 
       - name: Install ansible and other dependencies.
-        run: pip install ansible molecule yamllint openshift
+        run: pip install ansible molecule yamllint docker openshift
 
       - name: Run molecule default test scenario
         run: molecule test
