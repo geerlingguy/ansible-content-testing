@@ -1,0 +1,7 @@
+---
+# This task includes a module that has been moved to the community.general
+# collection in Ansible 2.10+.
+- name: Change global git configuration.
+  git_config:
+    name: color.ui
+    value: auto

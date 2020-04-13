@@ -3,14 +3,15 @@
 
   vars:
     kind_version: v0.7.0
-    docker_install_compose: false
 
   collections:
     - community.kubernetes
 
   roles:
-    - name: geerlingguy.exim
+    - name: geerlingguy.git
       become: true
+
+    - name: community_test
 
   tasks:
     # Create a kind cluster.
