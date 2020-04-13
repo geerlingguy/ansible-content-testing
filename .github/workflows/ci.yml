@@ -29,7 +29,7 @@ jobs:
       #   uses: engineerd/setup-kind@v0.3.0
 
       - name: Install ansible and other dependencies.
-        run: pip install ansible molecule yamllint docker openshift
+        run: pip install ansible ansible-lint yamllint docker molecule openshift
 
       - name: Run molecule default test scenario
         run: molecule test
