@@ -41,6 +41,6 @@
       include_role:
         name: replay
 
-  post_tasks:
-    # - name: Delete the kind cluster.
-    #   include_tasks: tasks/delete-kind.yml
+# post_tasks:
+#   - name: Delete the kind cluster.
+#     include_tasks: tasks/delete-kind.yml

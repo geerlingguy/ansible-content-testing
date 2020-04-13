@@ -9,7 +9,7 @@
 
     - name: Install kind if not already installed.
       get_url:
-        url: https://github.com/kubernetes-sigs/kind/releases/download/{{ kind_version }}/kind-Linux-amd64
+        url: https://github.com/kubernetes-sigs/kind/releases/download/{{ kind_version }}/kind-Linux-amd64  # yamllint disable-line rule:line-length
         dest: /usr/bin/kind
         mode: 0755
       when: kind_which.rc != 0
