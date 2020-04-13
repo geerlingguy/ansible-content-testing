@@ -1,0 +1,46 @@
+---
+- hosts: all
+
+  vars:
+    kind_version: v0.7.0
+    docker_install_compose: false
+
+  collections:
+    - community.kubernetes
+
+  roles:
+    - name: geerlingguy.exim
+      become: true
+
+  tasks:
+    # Create a kind cluster.
+    - include_tasks: tasks/prepare-kind.yml
+
+    # Gather information and run a command on the kind cluster.
+    - name: Test the k8s_info module from the collection.
+      k8s_info:
+        kind: Pod
+        label_selectors:
+          - component=kube-apiserver
+      register: pod_list
+      delegate_to: localhost
+
+    - name: Test the k8s_exec module from the collection.
+      k8s_exec:
+        namespace: kube-system
+        pod: "{{ pod_list.resources[0].metadata.name }}"
+        command: date
+      register: exec_output
+      changed_when: false
+      delegate_to: localhost
+
+    - name: Dump the date.
+      debug: var=exec_output.stdout
+
+    # Do the same tasks in a standalone role.
+    - include_role:
+        name: replay
+
+  post_tasks:
+    # Delete the kind cluster.
+    # - include_tasks: tasks/delete-kind.yml

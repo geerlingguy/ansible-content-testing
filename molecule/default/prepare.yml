@@ -1,0 +1,12 @@
+---
+- name: Prepare
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install openshift and docker libraries.
+      pip:
+        name:
+          - openshift
+          - docker
+        state: present

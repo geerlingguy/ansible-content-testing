@@ -1,0 +1,29 @@
+---
+- block:
+
+    - name: Check if kind is installed.
+      command: which kind
+      changed_when: false
+      failed_when: false
+      register: kind_which
+
+    - name: Install kind if not already installed.
+      get_url:
+        url: https://github.com/kubernetes-sigs/kind/releases/download/{{ kind_version }}/kind-Linux-amd64
+        dest: /usr/bin/kind
+        mode: 0755
+      when: kind_which.rc != 0
+      become: true
+
+    - name: Check for running kind clusters.
+      command: kind get clusters
+      changed_when: false
+      register: kind_clusters
+
+    - name: Start a kind test cluster.
+      command: kind create cluster --name=test
+      when: "'test' not in kind_clusters.stdout"
+      changed_when: false
+
+  delegate_to: localhost
+  become: false

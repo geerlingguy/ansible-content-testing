@@ -1,0 +1,21 @@
+---
+- name: Test the k8s_info module from the collection (in replay).
+  k8s_info:
+    kind: Pod
+    label_selectors:
+      - component=kube-apiserver
+  register: pod_list
+  delegate_to: localhost
+
+- name: Test the k8s_exec module from the collection (in replay).
+  k8s_exec:
+    namespace: kube-system
+    pod: "{{ pod_list.resources[0].metadata.name }}"
+    command: date
+  register: exec_output
+  changed_when: false
+  delegate_to: localhost
+
+- name: Dump the date (in replay).
+  debug:
+    msg: "{{ exec_output.stdout }}"

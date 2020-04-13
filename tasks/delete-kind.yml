@@ -1,0 +1,9 @@
+---
+- block:
+
+    - name: Delete kind cluster.
+      command: kind delete cluster --name=test
+      changed_when: false
+
+  delegate_to: localhost
+  become: false
