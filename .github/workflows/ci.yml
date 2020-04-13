@@ -1,0 +1,35 @@
+---
+name: CI
+'on':
+  push:
+    branches:
+      - master
+  pull_request:
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+
+  ansible-stable:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: ['3.7']
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+
+      - name: Set up Python ${{ matrix.python_version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python_version }}
+
+      # Use our tasks in the playbook which is about as fast.
+      # - name: Set up KinD cluster
+      #   uses: engineerd/setup-kind@v0.3.0
+
+      - name: Install ansible and other dependencies.
+        run: pip install ansible ansible-lint yamllint docker molecule openshift
+
+      - name: Run molecule default test scenario
+        run: molecule test

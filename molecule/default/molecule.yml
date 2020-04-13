@@ -9,7 +9,8 @@ driver:
 lint: |
   set -e
   yamllint .
-  ansible-lint
+  # Disable until https://github.com/ansible/ansible-lint/pull/642 is resolved.
+  # ansible-lint
 platforms:
   - name: instance
     image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos8}-ansible:latest"
@@ -21,5 +22,4 @@ platforms:
 provisioner:
   name: ansible
   playbooks:
-    prepare: prepare.yml
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
