@@ -45,7 +45,9 @@ jobs:
           python-version: ${{ matrix.python_version }}
 
       - name: Install Ansible ACD distribution.
-        run: pip install --extra-index-url https://toshio.fedorapeople.org/ansible/acd/ ansible
+        run: >-
+          pip install
+          --extra-index-url https://toshio.fedorapeople.org/ansible/acd/ ansible
 
       - name: Install other dependencies.
         run: pip install ansible-lint yamllint docker molecule openshift
