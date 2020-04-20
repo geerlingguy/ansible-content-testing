@@ -3,9 +3,18 @@
 
   vars:
     kind_version: v0.7.0
+    not_ssh_url: 'this is not an ssh url'
+    real_ssh_url: 'ssh://johndoe@server/test.git'
 
   collections:
     - community.kubernetes
+
+  pre_tasks:
+    - name: Test custom ssh_url test plugin.
+      assert:
+        that:
+          - not_ssh_url is not ssh_url
+          - real_ssh_url is ssh_url
 
   roles:
     - name: geerlingguy.git
