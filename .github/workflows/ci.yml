@@ -46,7 +46,7 @@ jobs:
 
       - name: Install Ansible ACD distribution.
         run: >-
-          pip install ansible
+          pip install ansible>=2.10
           --extra-index-url https://toshio.fedorapeople.org/ansible/acd/
 
       - name: Install other dependencies.
