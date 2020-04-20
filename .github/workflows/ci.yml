@@ -49,7 +49,6 @@ jobs:
       - name: Patch installation with redirection WIP PR 67684.
         run: |
           cd $(pip show ansible | grep Location | cut -d' ' -f2)/ansible
-          ls -lah
           wget https://github.com/ansible/ansible/pull/67684.patch
           sed -i -e 's/lib\/ansible\///' 67684.patch
           git apply -v 67684.patch || true
