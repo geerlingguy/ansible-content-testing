@@ -12,6 +12,12 @@ Make sure you have [Molecule](https://molecule.readthedocs.io/en/latest/), [Dock
 
     molecule test
 
+The [CI GitHub Actions Workflow](https://github.com/geerlingguy/ansible-content-testing/actions?query=workflow%3ACI) is meant to test this playbook against the following scenarios:
+
+  - Latest Ansible 2.9.x release (should pass)
+  - Latest Ansible ACD release (what will become 2.10) (should pass)
+  - Latest ansible-base release (`devel` branch) (should fail)
+
 ## License
 
 MIT.
