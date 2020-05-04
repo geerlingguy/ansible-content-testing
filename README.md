@@ -1,6 +1,6 @@
 # Ansible Content Testing repository
 
-![CI](https://github.com/geerlingguy/ansible-content-testing/workflows/CI/badge.svg?branch=master)
+[![CI](https://github.com/geerlingguy/ansible-content-testing/workflows/CI/badge.svg?branch=master)](https://github.com/geerlingguy/ansible-content-testing/actions?query=workflow%3ACI)
 
 This repository is meant to test the migration of various types of module and role invocations against the 'next generation' of Ansible, e.g. the ACD Ansible Community Distribution.
 
