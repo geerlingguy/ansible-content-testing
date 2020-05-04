@@ -1,0 +1,26 @@
+---
+- name: Include a 'test' role from 'example.one' collection.
+  include_role:
+    name: example.one.test
+
+- name: Check example.one.test file.
+  stat:
+    path: /tmp/example.one.test
+  register: example_one_test
+
+- name: Assert that example.one.test role ran.
+  assert:
+    that: example_one_test.stat.exists
+
+- name: Include a 'test' role from 'example.two' collection.
+  include_role:
+    name: example.two.test
+
+- name: Check example.two.test file.
+  stat:
+    path: /tmp/example.two.test
+  register: example_two_test
+
+- name: Assert that example.two.test role ran.
+  assert:
+    that: example_two_test.stat.exists

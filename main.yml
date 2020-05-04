@@ -50,6 +50,9 @@
       include_role:
         name: replay
 
+    - name: Test running two same-named roles in separate collections.
+      include_tasks: tasks/same-name-roles.yml
+
 # post_tasks:
 #   - name: Delete the kind cluster.
 #     include_tasks: tasks/delete-kind.yml

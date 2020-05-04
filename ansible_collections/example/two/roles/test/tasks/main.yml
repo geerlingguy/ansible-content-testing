@@ -1,0 +1,6 @@
+---
+- name: Write a file named example.two.test into /tmp dir.
+  copy:
+    content: ""
+    dest: /tmp/example.two.test
+    force: false
