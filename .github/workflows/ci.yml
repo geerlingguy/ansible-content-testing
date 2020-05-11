@@ -46,13 +46,6 @@ jobs:
           pip install ansible>=2.10
           --extra-index-url https://toshio.fedorapeople.org/ansible/acd/
 
-      - name: Patch installation with redirection WIP PR 67684.
-        run: |
-          cd $(pip show ansible | grep Location | cut -d' ' -f2)/ansible
-          wget https://github.com/ansible/ansible/pull/67684.patch
-          sed -i -e 's/lib\/ansible\///' 67684.patch
-          git apply -v 67684.patch || true
-
       - name: Install other dependencies.
         run: pip install ansible-lint yamllint docker molecule openshift
 
