@@ -26,6 +26,9 @@ jobs:
 
       - name: Run molecule default test scenario.
         run: molecule test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
 
   ansible-acd:
     runs-on: ubuntu-latest
@@ -48,6 +51,9 @@ jobs:
 
       - name: Run molecule default test scenario.
         run: molecule test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
 
   ansible-base:
     runs-on: ubuntu-latest
@@ -69,4 +75,7 @@ jobs:
       # Allow this to fail, but have the output available for debugging.
       - name: Run molecule default test scenario.
         run: molecule test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
         continue-on-error: true
