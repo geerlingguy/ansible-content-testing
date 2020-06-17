@@ -26,4 +26,3 @@ provisioner:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
   env:
     ANSIBLE_COLLECTIONS_PATHS: "${MOLECULE_PROJECT_DIRECTORY}/."
-    SAME_NAME_ROLE_TEST: ${SAME_NAME_ROLE_TEST:-true}

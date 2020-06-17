@@ -5,7 +5,6 @@
     kind_version: v0.7.0
     not_ssh_url: 'this is not an ssh url'
     real_ssh_url: 'ssh://johndoe@server/test.git'
-    same_name_role_test: "{{ lookup('env', 'SAME_NAME_ROLE_TEST') | default(true) }}"
 
   collections:
     - community.kubernetes
@@ -53,7 +52,6 @@
 
     - name: Test running two same-named roles in separate collections.
       include_tasks: tasks/same-name-roles.yml
-      when: same_name_role_test
 
 # post_tasks:
 #   - name: Delete the kind cluster.
