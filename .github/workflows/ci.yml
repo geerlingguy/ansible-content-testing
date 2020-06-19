@@ -29,7 +29,6 @@ jobs:
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
-          SAME_NAME_ROLE_TEST: false
 
   ansible-acd:
     runs-on: ubuntu-latest
