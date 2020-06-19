@@ -42,9 +42,7 @@ jobs:
           python-version: 3.7
 
       - name: Install Ansible ACD distribution.
-        run: >-
-          pip install ansible>=2.10
-          --extra-index-url https://toshio.fedorapeople.org/ansible/acd/
+        run: pip install --pre ansible>=2.10
 
       - name: Install other dependencies.
         run: pip install ansible-lint yamllint docker molecule openshift
