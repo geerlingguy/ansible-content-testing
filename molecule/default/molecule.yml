@@ -4,6 +4,7 @@ dependency:
   options:
     role-file: requirements.yml
     requirements-file: requirements.yml
+    collections-path: ../../
 driver:
   name: docker
 lint: |
