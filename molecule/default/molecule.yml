@@ -4,7 +4,6 @@ dependency:
   options:
     role-file: requirements.yml
     requirements-file: requirements.yml
-    collections-path: "./"
 driver:
   name: docker
 lint: |
@@ -25,4 +24,5 @@ provisioner:
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
   env:
-    ANSIBLE_COLLECTIONS_PATHS: "./"
+    ANSIBLE_COLLECTIONS_PATHS: ../../
+    ANSIBLE_COLLECTIONS_PATH: ../../
