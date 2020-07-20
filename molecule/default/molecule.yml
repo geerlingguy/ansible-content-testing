@@ -4,7 +4,7 @@ dependency:
   options:
     role-file: requirements.yml
     requirements-file: requirements.yml
-    collections-path: ../../
+    collections-path: "${MOLECULE_PROJECT_DIRECTORY}/."
 driver:
   name: docker
 lint: |
